@@ -2,7 +2,8 @@
  * Page objects barrel.
  *
  * Usage:
- *   import { InventoryPage } from '../../pages';
+ *   import { FrontPage } from '../../pages';
  */
 
+export { BookingSection } from './booking-section.page';
 export { FrontPage } from './front.page';

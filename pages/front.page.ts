@@ -6,7 +6,6 @@ export class FrontPage {
     async visit() {
         await this.page.goto('', { waitUntil: 'load' });
         const welcomeHeader = this.page.getByText('Welcome to Shady Meadows B&B');
-
         await expect(welcomeHeader).toBeVisible();
     }
 
