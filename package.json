@@ -1,0 +1,24 @@
+{
+  "name": "shady-meadows-playwright-ts",
+  "version": "1.0.0",
+  "description": "project using playwright &amp; ts with automationintesting UI site",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitknr/shady-meadows-playwright-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gitknr/shady-meadows-playwright-ts/issues"
+  },
+  "homepage": "https://github.com/gitknr/shady-meadows-playwright-ts#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "dotenv": "^17.4.2"
+  }
+}
