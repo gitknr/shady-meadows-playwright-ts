@@ -53,6 +53,17 @@ export class BookingSection extends BasePage {
     }
 
     async clickCheckAvailabilityButton() {
-        await this.page.locator('section[id="booking"] button', { hasText: 'Check Availability' }).click();
+        const responsePromise = this.page.waitForResponse(
+            response => response.url().includes('/api/room') && response.request().method() === 'GET'
+        );
+        
+        await this.page
+            .locator('section[id="booking"] button', { hasText: 'Check Availability' })
+            .click();
+
+        const response = await responsePromise;
+        const responseBody = await response.json();
+
+        return responseBody.rooms.length;
     }
 }

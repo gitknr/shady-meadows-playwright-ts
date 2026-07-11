@@ -1,4 +1,4 @@
-import {BookingSection} from '../../pages';
+import {BookingSection, RoomsSection} from '../../pages';
 import {test} from "@playwright/test";
 
 /**
@@ -12,18 +12,28 @@ test.describe('Check Front Page Booking Section', { tag: '@front-page' }, () => 
     test('Verify Booking Section', async ({page}) => {
         const bookingSection = new BookingSection(page);
         await bookingSection.visit();
+
+        // verify the booking section is visible and contains the expected elements
         await bookingSection.verifyBookingSectionTitle();
         await bookingSection.verifyCheckInDateInput();
         await bookingSection.verifyCheckOutDateInput();
         await bookingSection.verifyCheckAvailabilityButton();
     });
 
-    test('Check Booking Section Availability', async ({page}) => {
+    test('Check Availability', async ({page}) => {
         const bookingSection = new BookingSection(page);
         await bookingSection.visit();
         await bookingSection.selectCheckInDate(7);
         await bookingSection.selectCheckOutDate(14);
-        await bookingSection.clickCheckAvailabilityButton();
+
+        // click the "Check Availability" button. the number of rooms available will be returned.
+        const roomCount = await bookingSection.clickCheckAvailabilityButton();
+        const roomsSection = new RoomsSection(page);
+
+        // user is redirected to the rooms section
+        await roomsSection.verifyRoomsSectionIsVisible();
+        // verify the number of rooms available
+        await roomsSection.verifyRoomsCount(roomCount);
     })
 
 });
