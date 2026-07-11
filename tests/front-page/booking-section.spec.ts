@@ -2,7 +2,7 @@ import {BookingSection, RoomsSection} from '../../pages';
 import {test} from '../../utils/testHooks';
 
 /**
- * Verifies that the Billing Section displays correctly
+ * Verifies Booking Section display and functionality
  *
  * NOTE: Execution requires Playwright's configuration ('playwright.config.js')
  * to first execute the setup script (e.g., auth.setup.js) and load the resulting storage state.
