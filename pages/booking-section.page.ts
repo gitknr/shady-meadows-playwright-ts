@@ -33,4 +33,26 @@ export class BookingSection extends BasePage {
         const checkAvailabilityButton = this.page.locator('section[id="booking"] button', { hasText: 'Check Availability' });
         await expect(checkAvailabilityButton).toBeVisible();
     }
+
+    async clickCheckInInput() {
+        await this.inputForLabel('Check In').click();
+    }
+
+    async selectCheckInDate(daysFromToday: number) {
+        await this.clickCheckInInput();
+        await this.selectDate(daysFromToday);
+    }
+
+    async clickCheckOutInput() {
+        await this.inputForLabel('Check Out').click();
+    }
+
+    async selectCheckOutDate(daysFromToday: number) {
+        await this.clickCheckOutInput();
+        await this.selectDate(daysFromToday);
+    }
+
+    async clickCheckAvailabilityButton() {
+        await this.page.locator('section[id="booking"] button', { hasText: 'Check Availability' }).click();
+    }
 }

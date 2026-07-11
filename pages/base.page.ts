@@ -9,4 +9,18 @@ export class BasePage {
             .locator('..')
             .locator('input');
     }
+
+    protected async selectDate( daysFromToday: number) {
+        const target = new Date();
+        target.setDate(target.getDate() + daysFromToday);
+
+        const label = `Choose ${target.toLocaleDateString('en-GB', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        })}`;
+
+        await this.page.getByLabel(label).click();
+    }
 }

@@ -18,4 +18,12 @@ test.describe('Check Front Page Booking Section', { tag: '@front-page' }, () => 
         await bookingSection.verifyCheckAvailabilityButton();
     });
 
+    test('Check Booking Section Availability', async ({page}) => {
+        const bookingSection = new BookingSection(page);
+        await bookingSection.visit();
+        await bookingSection.selectCheckInDate(7);
+        await bookingSection.selectCheckOutDate(14);
+        await bookingSection.clickCheckAvailabilityButton();
+    })
+
 });
