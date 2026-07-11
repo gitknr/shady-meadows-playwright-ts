@@ -1,5 +1,5 @@
 import {BookingSection, RoomsSection} from '../../pages';
-import {test} from "@playwright/test";
+import {test} from '../../utils/testHooks';
 
 /**
  * Verifies that the Billing Section displays correctly

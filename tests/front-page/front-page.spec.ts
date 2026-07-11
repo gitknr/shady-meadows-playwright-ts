@@ -1,5 +1,5 @@
 import {FrontPage} from '../../pages';
-import {test} from "@playwright/test";
+import {test} from '../../utils/testHooks';
 
 /**
  * Verifies that the Front Page displays correctly

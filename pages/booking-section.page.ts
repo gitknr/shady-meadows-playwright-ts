@@ -56,7 +56,7 @@ export class BookingSection extends BasePage {
         const responsePromise = this.page.waitForResponse(
             response => response.url().includes('/api/room') && response.request().method() === 'GET'
         );
-        
+
         await this.page
             .locator('section[id="booking"] button', { hasText: 'Check Availability' })
             .click();
