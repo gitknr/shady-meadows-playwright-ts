@@ -11,8 +11,16 @@ export class BasePage {
     }
 
     protected async selectDate( daysFromToday: number) {
+        const today = new Date();
         const target = new Date();
         target.setDate(target.getDate() + daysFromToday);
+
+        if (
+            target.getMonth() !== today.getMonth() ||
+            target.getFullYear() !== today.getFullYear()
+        ) {
+            await this.page.getByRole('button', { name: 'Next Month' }).click();
+        }
 
         const label = `Choose ${target.toLocaleDateString('en-GB', {
             weekday: 'long',
