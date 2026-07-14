@@ -65,4 +65,9 @@ export class RoomsSection extends BasePage {
         await expect(roomCard.locator('a[class="btn btn-primary"]', { hasText: 'Book Now' })).toBeVisible();
     }
 
+    async clickBookNowButton(roomType: string) {
+        const roomCard = await this.getRoomCardByRoomType(roomType);
+        await roomCard.locator('a[class="btn btn-primary"]', { hasText: 'Book Now' }).click();
+    }
+
 }
