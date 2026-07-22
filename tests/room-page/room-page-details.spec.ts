@@ -16,6 +16,7 @@ test.describe('Check Room Page', { tag: '@room-page' }, () => {
         const roomPage = new RoomPage(page);
         await roomPage.verifyRoomTitle('Double');
         await roomPage.verifyRoomDescription('Vestibulum sollicitudin, lectus ac mollis consequat, lorem orci ultrices tellus, eleifend euismod tortor dui egestas erat. Phasellus et ipsum nisl.');
+        await roomPage.verifyDefaultBookingCalendarSelection();
         await roomPage.verifyRoomAmenity('TV');
         await roomPage.verifyRoomAmenity('Radio');
         await roomPage.verifyRoomAmenity('Safe');
@@ -29,6 +30,8 @@ test.describe('Check Room Page', { tag: '@room-page' }, () => {
             'No parties or events',
             'Pets allowed (restrictions apply)'
         ]);
+        await roomPage.verifyRoomRate('£150');
+        await roomPage.verifyDefaultBookingCalendarSelection();
     })
 
 })
