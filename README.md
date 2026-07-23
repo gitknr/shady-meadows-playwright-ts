@@ -14,6 +14,7 @@ This repository contains browser-level checks for the public front page and room
 - Room detail assertions
 - Auth setup for saved storage state
 - Shared test hooks for consistent test logging
+- GitHub Actions workflow for push and pull request runs
 
 ## Project Structure
 
@@ -31,6 +32,26 @@ This repository contains browser-level checks for the public front page and room
 - `utils/` - shared test utilities
   - `testHooks.ts` - custom Playwright test wrapper with logging
 - `playwright/` - generated Playwright artifacts, including auth state
+
+## Environment
+
+The suite reads its runtime values from environment variables.
+
+- `BASE_URL` - repository variable in GitHub Actions, local `.env` for development
+- `TEST_USERNAME` - repository secret in GitHub Actions, local `.env` for development
+- `TEST_PASSWORD` - repository secret in GitHub Actions, local `.env` for development
+
+The `auth.setup.ts` setup test uses these values to create the saved storage state used by the rest of the suite.
+
+## CI
+
+GitHub Actions runs the Playwright workflow from `.github/workflows/playwright.yml`.
+
+- triggers on `push`
+- triggers on `pull_request`
+- can be run manually from the Actions tab
+
+The workflow installs dependencies, installs Playwright browsers, runs the suite, and uploads the HTML report as an artifact.
 
 ## Notes
 
